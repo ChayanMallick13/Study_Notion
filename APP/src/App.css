@@ -1,0 +1,50 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
+html,body {
+    overflow-x: hidden;
+    color: rgba(0, 0, 0, 0.276);
+}
+
+.homepage_bg{
+    background-image: url('./assets/Images/bghome.svg');
+    border-bottom: 1px solid green;
+}
+
+.loader {
+    font-size: 48px;
+    font-weight: 600;
+    display: inline-block;
+    letter-spacing: 2px;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #FFF;
+    box-sizing: border-box;
+    animation: spotlight 2s linear infinite alternate;
+  }
+  
+  @keyframes spotlight {
+    0% , 20% {
+      opacity: 1;
+      letter-spacing: 2px;
+     }
+   80% , 100% {
+      opacity: 0;
+      letter-spacing: 32px;
+     }
+  }
+
+  /* Remove spinner arrows on number inputs */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+        
