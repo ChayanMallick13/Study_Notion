@@ -40,6 +40,9 @@ function CoursePage() {
     }
 
     function checkAlreadyBought(){
+        if(user.accountType === ACCOUNT_TYPE.INSTRUCTOR){
+            return false;
+        }
         const ret = user.courses.filter((ele) => ele._id === courseId);
         //console.log(ret);
         return ret.length;
@@ -67,6 +70,10 @@ function CoursePage() {
     }
 
     function handleBuyCourse(){
+        if(user?.accountType===ACCOUNT_TYPE.INSTRUCTOR){
+            toast.error('You are Instructor , Cant Buy Courses');
+            return;
+        }
         const body = {
             courses:[courseId],
         };

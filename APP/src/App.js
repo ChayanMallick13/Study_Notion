@@ -26,6 +26,7 @@ import CatalogPage from "./Pages/CatalogPage";
 import CoursePage from "./Pages/CoursePage";
 import ViewCourse from "./Pages/ViewCourse";
 import VideoPlayer from "./Components/Common/VideoPlayer";
+import InstructorDash from './Components/Core/TeacherDashBoard/DashboardIndex';
 
 
 
@@ -139,6 +140,10 @@ function App() {
                 <Route
                   path="add-course"
                   element={<AddCourse />}
+                />
+                <Route
+                  path="instructor"
+                  element={<InstructorDash/>}
                 />
               </>)
           }

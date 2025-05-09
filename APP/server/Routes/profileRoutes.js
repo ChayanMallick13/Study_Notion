@@ -16,6 +16,7 @@ const {getAllUserDetails,updateProfile,cancelAccountDeleteRequest,makeAccountDel
     ,getAllUserCourses,updateProfilePicture,
 checkDeleteStatus} 
 = require('../Controllers/Profile');
+const { getInstructorStats } = require('../Controllers/Stats');
 
 
 
@@ -33,7 +34,11 @@ profilerouter.put('/updateProfilePicture',auth,updateProfilePicture);
 //get all enrolled courses
 profilerouter.get('/getAllEnrolledCourses',auth,getAllUserCourses);
 
+//deletion status routes
 profilerouter.post('/getDeletionStatus',checkDeleteStatus);
+
+//instructor stats route
+profilerouter.get('/getInstructorInfo',auth,getInstructorStats);
 
 
 module.exports = profilerouter;

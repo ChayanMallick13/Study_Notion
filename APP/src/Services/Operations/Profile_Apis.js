@@ -113,3 +113,16 @@ export const updateLatestUserDetails = () => {
         );
     }
 }
+
+export const fetchUserDetails = async(setUserDetails) => {
+    await apiConnector('GET',profileLinks.GET_INSTRUCTOR_STATS_API)
+    .then(
+        (res) => {
+            setUserDetails(res.data);
+        }
+    ).catch(
+        (err) => {
+            console.log(err.response.data.message);
+        }
+    );
+}

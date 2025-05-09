@@ -65,6 +65,7 @@ export const paymentLinks = {
 
 export const profileLinks = {
     GET_ALL_PROFILE_DETAILS_API:BASE_URL+'/profile/getAllUsersDetails',
+    GET_INSTRUCTOR_STATS_API:BASE_URL+'/profile/getInstructorInfo'
 }
 
 export const courseProgressLinks = {

@@ -3,6 +3,7 @@ import ContactusDetails from '../Components/ContactUsPage/ContactusDetails';
 import ContactUsForm from '../Components/Common/ContactUsForm';
 import Footer from '../Components/Common/Footer';
 import ConfirmModal from '../Components/Common/ConfirmModal';
+import LearnersReviewSlider from '../Components/Common/LearnersReviewSlider';
 
 const ContactUsPage = () => {
   return (
@@ -24,6 +25,10 @@ const ContactUsPage = () => {
                 <h3 className='text-4xl'>Reviews from other learners</h3>
 
                 {/* slider  */}
+            </div>
+
+            <div className='w-[90vw] mx-auto'>
+                <LearnersReviewSlider/>
             </div>
 
         </div>
