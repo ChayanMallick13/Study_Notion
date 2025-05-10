@@ -52,7 +52,7 @@ const ReviewModal = ({setreviewModal}) => {
   return (
     <div className='fixed z-30 top-0 left-0 right-0 bottom-0 bg-richblack-700/70 flex items-center justify-center'>
       <div className='border-[2px] border-white/30'>
-        <div className='bg-richblack-900 text-white w-[550px]'>
+        <div className='bg-richblack-900 text-white md:w-[550px] w-[99vw]'>
           <div className='flex items-center justify-between bg-richblack-700 p-4 border-b-[2px] border-b-richblack-300'>
             <span>Add Review</span>
             <button
@@ -66,7 +66,7 @@ const ReviewModal = ({setreviewModal}) => {
 
         <div className='bg-richblack-900 p-5 text-white'>
           <div className='flex flex-col justify-center items-center'>
-            <div className='flex flex-row items-center gap-3 mb-5'>
+            <div className='flex md:flex-row flex-col items-center gap-3 mb-5'>
               <div>
                 <img alt='UserImage' src={user?.image} 
                   className='w-[100px] h-[100px] rounded-full aspect-square object-cover'
