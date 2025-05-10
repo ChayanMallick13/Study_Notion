@@ -66,6 +66,10 @@ exports.getUserConfirmationEmailTemplate = (firstName, lastName, email, phoneNum
                     font-size: 12px;
                     color: #888888;
                 }
+                    .logo {
+				max-width: 200px;
+				margin-bottom: 20px;
+			}
                 .footer a {
                     color: #3a8dff;
                     text-decoration: none;
@@ -74,6 +78,8 @@ exports.getUserConfirmationEmailTemplate = (firstName, lastName, email, phoneNum
         </head>
         <body>
             <div class="container">
+            <a href="${process.env.FRONT_END_BASE_URL}"><img class="logo"
+					src="${process.env.FRONT_END_BASE_URL}/Logo.png" alt="StudyNotion Logo"></a>
                 <div class="header">
                     <h1>Thank You for Reaching Out!</h1>
                     <i class="icon">&#128522;</i>
@@ -100,13 +106,13 @@ exports.getUserConfirmationEmailTemplate = (firstName, lastName, email, phoneNum
                         </tr>
                     </table>
                     <p>We value your feedback and appreciate you taking the time to reach out. Our team will get back to you shortly.</p>
-                    <p>If you need immediate assistance, feel free to visit our <a href="https://www.studynotion.com/support">Support Center</a>.</p>
+                    <p>If you need immediate assistance, feel free to visit our <a href="${process.env.FRONT_END_BASE_URL}/contact">Support Center</a>.</p>
                     <p>If you’d like to make any changes to your submission or have additional details to share, click the button below to update your message:</p>
                     <a href="mailto:${email}" class="cta-button">Update Your Message</a>
                 </div>
                 <div class="footer">
                     <p>&copy; 2025 Study Notion | Empowering Your Learning Journey</p>
-                    <p>Need help? Visit <a href="https://www.studynotion.com/support">Support Center</a></p>
+                    <p>Need help? Visit <a href="${process.env.FRONT_END_BASE_URL}/contact">Support Center</a></p>
                 </div>
             </div>
         </body>

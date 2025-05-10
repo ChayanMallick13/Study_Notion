@@ -50,7 +50,7 @@ const LearnersReviewSlider = () => {
                         reviews.map(
                             (ele, key) => {
                                 return <SwiperSlide key={key}>
-                                    <div className='select-none flex flex-col justify-between w-[360px] bg-richblack-800 h-[300px]
+                                    <div className='flex flex-col justify-between w-[360px] bg-richblack-800 h-[300px]
                                     px-3 py-3 border-[3px] border-richblack-400/20
                                     '>
                                        <div className='flex items-center gap-x-5 w-full'>

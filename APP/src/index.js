@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App";
 import "./index.css";
@@ -13,6 +13,7 @@ const store = configureStore({
   reducer: rootReducer,
   devTools: process.env.NODE_ENV !== 'production',
 })
+
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(

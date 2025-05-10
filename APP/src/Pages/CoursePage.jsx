@@ -296,6 +296,7 @@ function CoursePage() {
                     <div className='flex gap-x-5 items-center'>
                         <img alt='userIamge' src={courseDetails?.instructor?.image}
                             className='h-[75px] w-[75px] rounded-full object-cover'
+                            referrerPolicy='no-referrer'
                         />
                         <span className='text-2xl'>{courseDetails?.instructor?.firstName} {courseDetails?.instructor?.lastName}</span>
                     </div>

@@ -28,6 +28,7 @@ import ViewCourse from "./Pages/ViewCourse";
 import VideoPlayer from "./Components/Common/VideoPlayer";
 import InstructorDash from './Components/Core/TeacherDashBoard/DashboardIndex';
 import Index from "./Components/Core/PaymentHistory/Index";
+import { useEffect } from "react";
 
 
 
@@ -35,6 +36,11 @@ import Index from "./Components/Core/PaymentHistory/Index";
 function App() {
   const { user } = useSelector(state => state.Profile);
   // console.log('home user', user);
+
+  useEffect(() => {
+    document.querySelector("link[rel='icon']").href = "/favicon.png";
+  }, []);
+
   return (
     <div className="w-screen min-h-screen bg-richblack-900 flex flex-col font-inter">
       <Navibar />

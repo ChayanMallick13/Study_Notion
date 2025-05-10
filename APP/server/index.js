@@ -22,7 +22,7 @@ require('dotenv').config();
 const cors = require('cors');
 app.use(
     cors({
-        origin:"http://localhost:3000",
+        origin:(process.env.NODE_ENV==='production')?(process.env.FRONT_END_BASE_URL):("http://localhost:3000"),
         credentials:true,
     })
 );

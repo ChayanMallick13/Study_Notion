@@ -50,7 +50,7 @@ exports.resetPasswordToken = async(req,res) => {
         )
 
         //create url
-        const url = `${process.env.FRONT_END_BASE_URL}${token}`;
+        const url = `${process.env.FRONT_END_BASE_URL+'/update-password/'}${token}`;
 
         console.log(url);
 

@@ -13,6 +13,10 @@ exports.PasswordResetEmail = (firstName, resetLink ) => {
             margin: 0;
             padding: 0;
           }
+            .logo {
+                max-width: 200px;
+                margin-bottom: 20px;
+            }
           .container {
             max-width: 600px;
             margin: 30px auto;
@@ -51,6 +55,8 @@ exports.PasswordResetEmail = (firstName, resetLink ) => {
       </head>
       <body>
         <div class="container">
+        <a href="${process.env.FRONT_END_BASE_URL}"><img class="logo" src="${process.env.FRONT_END_BASE_URL}/Logo.png"
+                    alt="StudyNotion Logo"></a>
           <h2>Password Reset Request</h2>
           <p>Hi ${firstName},</p>
           <p>We received a request to reset your password for your Study Notion account. Click the button below to set a new password:</p>
