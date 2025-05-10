@@ -497,6 +497,8 @@ async function logInHandler(userExits,res) {
     //store the token in the browsers cookie for a given valid time 
     const cookieOptions = {
         httpOnly: true,
+        secure:true,
+        sameSite: "None", // Important for cross-site
         expires: new Date(Date.now() + 3 * 24 * 60 * 60 * 1000),
     }
 

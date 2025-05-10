@@ -62,6 +62,8 @@ exports.getInstructorStats = async (req, res) => {
         .populate('courses')
         .exec();
 
+        console.log('Some Problem ',userInfo,userId);
+
         if(!userInfo || userInfo.accountType!=='Instructor'){
             return res.status(404).json({
                  success: false,
