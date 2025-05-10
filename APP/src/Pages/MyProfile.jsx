@@ -20,6 +20,7 @@ function MyProfile() {
             <div className='flex flex-col md:flex-row gap-y-3 items-center gap-x-4'>
                 <img src={user.image} alt='userimage' height={78} width={78} 
                     className='rounded-full aspect-square object-cover'
+                    referrerPolicy="no-referrer"
                 />
                 <div className='flex flex-col gap-y-2'>
                     <p

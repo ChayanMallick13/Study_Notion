@@ -426,6 +426,8 @@ exports.getAllUserCourses = async (req, res) => {
         //get the user id from the req user
         const {userId} = req.user;
 
+        console.log(userId,'Temp');
+
         //check if the user id is valid
         const userDetails = await User.findById(userId)
         .populate(

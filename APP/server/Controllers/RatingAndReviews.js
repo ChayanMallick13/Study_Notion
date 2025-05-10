@@ -202,7 +202,7 @@ exports.getAllRatings = async (req, res) => {
 exports.getcourseAllRatings = async (req, res) => {
     try {
         
-        const courseId = req.bosy.courseId;
+        const courseId = req.body.courseId;
 
         const allReviews = RatingAndReview.find({
             course:mongoose.Types.ObjectId(courseId),

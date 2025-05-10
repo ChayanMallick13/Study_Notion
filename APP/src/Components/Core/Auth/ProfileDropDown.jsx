@@ -41,7 +41,9 @@ function ProfileDropDown() {
       <div className='rounded-full cursor-pointer'
       
       >
-        <img alt='user' src={user.image} className='rounded-full h-[35px] w-[35px] aspect-square object-cover'/>
+        <img alt='user' src={user.image} className='rounded-full h-[35px] w-[35px] aspect-square object-cover'
+          referrerPolicy="no-referrer"
+        />
 
       </div>
 
