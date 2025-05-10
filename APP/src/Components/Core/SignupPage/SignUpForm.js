@@ -7,22 +7,11 @@ import { sendOtp } from '../../../Services/Operations/Auth_Api';
 import { useDispatch } from 'react-redux';
 import countrycodes from '../../../data/countrycode.json';
 
-const SignUpForm = () => {
+const SignUpForm = ({formdata,setFormData}) => {
   const navigate = useNavigate();
   const [showPassword,setShowPassword] = useState(false);
   const [showCnfrmPass,setShowCnfrmPass] = useState(false);
   const dispatch = useDispatch();
-
-  const [formdata,setFormData] = useState({
-    firstName:'',
-    lastName:'',
-    email:'',
-    password:'',
-    confirmPassword:'',
-    accountType:'Student',
-    countryCode:'+91',
-    phNum:'',
-  });
 
   function changeHandler(event){
     const {value,name} = event.target;

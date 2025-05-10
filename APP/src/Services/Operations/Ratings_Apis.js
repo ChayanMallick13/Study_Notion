@@ -12,7 +12,7 @@ export const newRatingHandler = (closeModal,setLoadig,body) => {
         setLoadig(true);
         try {
             const apiRes = await apiConnector('POST',coursesLinks.CREATE_RATING_API,body);
-            console.log(apiRes);
+            //console.log(apiRes);
             toast.success('Review Recorded SuccessFully');
         } catch (error) {
             toast.error('Could Not Record Review some Error Occurred');
@@ -29,7 +29,7 @@ export const GetAvgRating = async (courseId,setRating) => {
     console.log(courseId);
     await apiConnector('POST',coursesLinks.GET_AVERAGE_RATING_API,{courseId}).then(
         (data) => {
-            console.log('data');
+            //console.log('data');
             setRating(data.data.averageRating);
         }
     ).catch(
@@ -44,7 +44,7 @@ export const GetAvgRating = async (courseId,setRating) => {
 export const getAllReviews = async (setReviews) => {
     await apiConnector('GET',coursesLinks.GET_ALL_RATINGS_API).then(
         (data) => {
-            console.log(data.data);
+            //console.log(data.data);
             setReviews(data.data.allReviews);
         }
     ).catch(

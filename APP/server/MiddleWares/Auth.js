@@ -10,7 +10,7 @@ exports.auth = async(req,res,next) => {
 
         //take the token from cookie if present
         const AuthToken = req.cookies.AuthCookie || req.body.token 
-        || req.header("Authorisation")?.replace("Bearer ","");
+        || req.header("Authorisation")?.replaceAll("Bearer ","");
 
         // console.log(AuthToken);
         //token not present

@@ -27,6 +27,7 @@ import CoursePage from "./Pages/CoursePage";
 import ViewCourse from "./Pages/ViewCourse";
 import VideoPlayer from "./Components/Common/VideoPlayer";
 import InstructorDash from './Components/Core/TeacherDashBoard/DashboardIndex';
+import Index from "./Components/Core/PaymentHistory/Index";
 
 
 
@@ -125,6 +126,10 @@ function App() {
                 <Route
                   path="cart"
                   element={<Cart />}
+                />
+                <Route
+                  path="purchase-history"
+                  element={<Index/>}
                 />
               </>)
           }

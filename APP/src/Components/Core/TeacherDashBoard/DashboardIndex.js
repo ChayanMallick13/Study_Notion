@@ -27,7 +27,7 @@ const DashboardIndex = () => {
 
   return (
     <div className='w-full h-full'>
-        <div className='w-11/12 text-white mx-auto'>
+        <div className='lg:w-11/12  text-white mx-auto'>
             
             <div>
                 <p className='text-3xl font-semibold'>Hi {user.firstName} 👋</p>

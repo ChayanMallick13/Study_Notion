@@ -60,6 +60,12 @@ const UserSchema = new mongoose.Schema(
         token: {
             type:String,
         },
+
+        isGoogleAccount:{
+            type:Boolean,
+            required:true,
+            default:false,
+        },
         
         resetPasswordExpires: {
             type:Date,

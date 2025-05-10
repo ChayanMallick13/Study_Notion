@@ -9,7 +9,7 @@ const {auth} = require('../MiddleWares/Auth');
 
 //controllers
 
-const {changePassword,sendOtp,signIn,signUp} = require('../Controllers/Auth');
+const {changePassword,sendOtp,signIn,signUp, signInwithGoogle} = require('../Controllers/Auth');
 
 const {resetPassword,resetPasswordToken} = require('../Controllers/ResetPassword');
 
@@ -24,6 +24,8 @@ userrouter.put('/changePassword',auth,changePassword);
 userrouter.post('/getOtp',sendOtp);
 userrouter.post('/signin',signIn);
 userrouter.post('/signup',signUp);
+
+userrouter.post('/sigInWithGoogle',signInwithGoogle);
 
 userrouter.get('/getStats',getStats);
 

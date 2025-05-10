@@ -15,7 +15,7 @@ function InstructorCardSection({courses}) {
             >View All</Link>
         </div>
 
-        <Link className='flex gap-x-3 mb-2 px-2'
+        <Link className='grid lg:grid-cols-3 gap-x-3 gap-y-8 mb-2 px-2 md:grid-cols-2 grid-cols-1'
         to={allCoursesLink}
         >
             {

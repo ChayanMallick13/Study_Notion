@@ -55,6 +55,7 @@ export const changePassword = (formdata,setdiableSubmit) => {
             const apiRes = await apiConnector('PUT',updateProfileLinks.CHANGE_PASSWORD_API,formdata);
             if(apiRes.data.success){
                 toast.success('Password Changed Successfully');
+                dispatch(updateLatestUserDetails());
             }
             else{
                 throw new Error("Error");

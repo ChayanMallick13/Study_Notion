@@ -12,6 +12,7 @@ const CourseCard = ({ thumnail, courseName, whatYouWillLearn, CourseDescription,
 }) => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
+    console.log(status);
     const editCourseDispatcher = () => {
         dispatch(setStep(1));
         dispatch(setEditCourse(true));
@@ -34,14 +35,16 @@ const CourseCard = ({ thumnail, courseName, whatYouWillLearn, CourseDescription,
                     <p className='text-sm text-richblack-200 font-light'>{CourseDescription?.substr(0,120)}</p>
                     <p className='text-richblack-50'>Created: {createdAt}</p>
                     <div className={`flex items-center gap-x-2 px-3 py-2 rounded-full w-max
-                    ${(status===COURSE_STATUS.DRAFT)?('text-red-300 bg-red-100/20'):('text-yellow-200 bg-yellow-50/20')}
+                    ${(status===COURSE_STATUS.DRAFT
+                    || (typeof status === 'object')
+                    )?('text-red-300 bg-red-100/20'):('text-yellow-200 bg-yellow-50/20')}
                     `}>
                         <p>
                             {
                                 (status===COURSE_STATUS.DRAFT)?(<FaRegClock />):(<FaRegCheckCircle />)
                             }
                         </p>
-                        <p>{status}</p>
+                        <p>{(typeof status === 'object')?('Draft'):(status)}</p>
                     </div>
                 </div>
             </div>

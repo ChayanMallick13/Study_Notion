@@ -34,13 +34,23 @@ const verifyPaymentHandler = async(purchaseResponse,courses,navigate,dispatch) =
     const tid = toast.loading('Verifying Payment ... ');
     dispatch(setPaymentLoading(true));
     try {
-
-        const body = {
-            razorpay_order_id:purchaseResponse.razorpay_order_id,
-            razorpay_payment_id:purchaseResponse.razorpay_payment_id,
-            razorpay_signature:purchaseResponse.razorpay_signature,
-            courses,
+        let body;
+        if(purchaseResponse==="****"){
+            body = {
+                courses,
+                zeroPayemnt:true,
+            }
         }
+        else{
+            body = {
+                razorpay_order_id:purchaseResponse.razorpay_order_id,
+                razorpay_payment_id:purchaseResponse.razorpay_payment_id,
+                razorpay_signature:purchaseResponse.razorpay_signature,
+                courses,
+            }
+    
+        }
+
 
         const responseData = await apiConnector('POST',paymentLinks.VERIFY_ORDER_API,body).then(
             () => {
@@ -53,6 +63,8 @@ const verifyPaymentHandler = async(purchaseResponse,courses,navigate,dispatch) =
                 toast.error('Payment Unsuccesfull Retry Later ... ');
             }
         )
+
+        
 
         dispatch(updateLatestUserDetails());
 
@@ -105,37 +117,50 @@ export const buyCourse = async(body,navigate,dispatch) => {
         const orderCreateApiRes = await apiConnector('POST',paymentLinks.CREATE_ORDER_API,body);
         const OrderCreateResponse = orderCreateApiRes.data.orderCreationResponse;
 
-        
         const userName = `${orderCreateApiRes.data.userDetails.firstName} ${orderCreateApiRes.data.userDetails.lastName}`;
 
-        //on successfull payment
-        const options = {
-            key:process.env.REACT_APP_RAZORPAY_KEY,
-            currency:OrderCreateResponse.currency,
-            amount:`${OrderCreateResponse.amount}`,
-            order_id:OrderCreateResponse.id,
-            name:"Study Notion",
-            description:"Thank You For Purchasing The course",
-            image:rzpLogo,
-            prefill:{
-                name:userName,
-            },
-            handler:function(response){
+        if(OrderCreateResponse==="****"){
+            //send a purchase mail to user
+            send_purchaseComplete_mail(userName,`${0}`,'freeOrder');
 
-                
-                //send a purchase mail to user
-                send_purchaseComplete_mail(userName,`${OrderCreateResponse.amount}`,OrderCreateResponse.id);
+            //verify payment 
+            verifyPaymentHandler("****",body.courses,navigate,dispatch);
 
-                //verify payment 
-                verifyPaymentHandler(response,body.courses,navigate,dispatch);
+        }
+        else{
+            //on successfull payment
+            const options = {
+                key:process.env.REACT_APP_RAZORPAY_KEY,
+                currency:OrderCreateResponse.currency,
+                amount:`${OrderCreateResponse.amount}`,
+                order_id:OrderCreateResponse.id,
+                name:"Study Notion",
+                description:"Thank You For Purchasing The course",
+                image:rzpLogo,
+                prefill:{
+                    name:userName,
+                },
+                handler:function(response){
 
-                
+                    
+                    //send a purchase mail to user
+                    send_purchaseComplete_mail(userName,`${OrderCreateResponse.amount}`,OrderCreateResponse.id);
 
-            },
+                    //verify payment 
+                    verifyPaymentHandler(response,body.courses,navigate,dispatch);
+
+                    
+
+                },
+            }
+
+            const rzp = new window.Razorpay(options);
+            rzp.open();
         }
 
-        const rzp = new window.Razorpay(options);
-        rzp.open();
+        
+
+        
 
     } catch (err) {
         console.error("Some Error Occurred In Buy Course ");
@@ -146,6 +171,21 @@ export const buyCourse = async(body,navigate,dispatch) => {
 }
 
 
+export const getUserPaymentHistory = async(setLoading,setPaymentdata) => {
+    setLoading(true);
+
+    await apiConnector('GET',paymentLinks.GET_USER_PAYMENT_HISTORY).then(
+        (res) => {
+            setPaymentdata(res.data.recieptDetails);
+        }
+    ).catch(
+        (err) => {
+            console.error(err.response.data.message);
+        }
+    )
+
+    setLoading(false);
+}
 
 
 

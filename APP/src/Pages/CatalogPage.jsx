@@ -11,7 +11,8 @@ import Footer from '../Components/Common/Footer';
 
 function CatalogPage() {
     const location = useLocation();
-    let category = (location.pathname.split('/').at(-1).replace('%20', ' '));
+    let category = (location.pathname.split('/').at(-1).replaceAll('%20', ' '));
+    console.log(category);
     let categoryId = null;
     const navigate = useNavigate();
     const dispatch = useDispatch();

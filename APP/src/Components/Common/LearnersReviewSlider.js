@@ -50,12 +50,12 @@ const LearnersReviewSlider = () => {
                         reviews.map(
                             (ele, key) => {
                                 return <SwiperSlide key={key}>
-                                    <div className='select-none flex flex-col justify-between w-[360px] bg-richblack-800 h-[200px]
+                                    <div className='select-none flex flex-col justify-between w-[360px] bg-richblack-800 h-[300px]
                                     px-3 py-3 border-[3px] border-richblack-400/20
                                     '>
                                        <div className='flex items-center gap-x-5 w-full'>
                                             <img src={ele.user.image} alt='User'
-                                                className='w-[80px] h-[70px] aspect-square rounded-full'
+                                                className='w-[80px] h-[80px] aspect-square rounded-full'
                                             />
                                             <div>
                                                 <div className='flex gap-x-[3px]'>
@@ -67,8 +67,8 @@ const LearnersReviewSlider = () => {
                                        </div>
                                        <p>
                                         {
-                                            ele.review.substr(0,80)
-                                        }
+                                            ele.review.substr(0,200)
+                                        }...
                                        </p>
                                        <div className='flex items-center gap-x-4'>
                                             <p className='text-yellow-100 font-extrabold'>{ele.rating}</p>

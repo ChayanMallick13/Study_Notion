@@ -1,5 +1,5 @@
 import toast from "react-hot-toast";
-import { apiConnector } from "../apiconnector";
+import  {apiConnector}  from "../apiconnector";
 import { authLinks, updateProfileLinks } from "../apis";
 import { setToken,setsignupData } from "../../reducer/Slices/authslice";
 import { setUser } from "../../reducer/Slices/ProfileSlice";
@@ -174,3 +174,35 @@ export const signUp = (signupDetails,navigate) => {
     }
 }
 
+export const loginWithGoogle = (body,navigate) => {
+    return async(dispatch) => {
+        const toastId = toast.loading('Loading..');
+        dispatch(setLoader());
+        try {
+            const apiDetails = await apiConnector('POST',authLinks.SIGN_IN_WITH_GOOGLE,body);
+            const loginData = apiDetails.data;
+    
+            console.log(loginData);
+    
+            if(loginData.success){
+                dispatch(setToken(loginData.user.token));
+                dispatch(setUser(loginData.user));
+                console.log(loginData.user);
+                localStorage.setItem('token',JSON.stringify(loginData.user.token));
+                localStorage.setItem('user',JSON.stringify(loginData.user));
+                if(navigate)
+                    navigate('/dashboard/my-profile');
+                toast.success(loginData.message);
+            }
+            else{
+                toast.error(loginData.message);
+            }
+        } catch (error) {
+            console.log('Some Error Occurred');
+            console.error(error);
+            toast.error('Error in Logging You In..');
+        }
+        dispatch(resetLoader());
+        toast.dismiss(toastId);
+    }
+}

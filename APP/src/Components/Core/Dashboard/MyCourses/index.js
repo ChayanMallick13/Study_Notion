@@ -9,6 +9,7 @@ import { resetCourseState } from '../../../../reducer/Slices/CourseSlice';
 
 const MyCoursePage = () => {
     const [myCourses, setmyCourses] = useState(null);
+    console.log(myCourses);
     const dispatch = useDispatch();
     useEffect(
         () => {

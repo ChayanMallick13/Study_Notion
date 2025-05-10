@@ -247,22 +247,22 @@ const Home = () => {
 
                             <SkillSectionCode
                                 image={Logo2}
-                                heading={'Leadership'}
-                                desc={'Fully committed to the success company'}
+                                heading={'Responsibility'}
+                                desc={'Students will always be our top priority'}
                                 last={false}
                             />
 
                             <SkillSectionCode
                                 image={Logo3}
-                                heading={'Leadership'}
-                                desc={'Fully committed to the success company'}
+                                heading={'Flexibility'}
+                                desc={'The ability to switch is an important skills'}
                                 last={false}
                             />
 
                             <SkillSectionCode
                                 image={Logo4}
-                                heading={'Leadership'}
-                                desc={'Fully committed to the success company'}
+                                heading={'Solve the problem'}
+                                desc={'Code your way to a solution'}
                                 last={true}
                             />
 

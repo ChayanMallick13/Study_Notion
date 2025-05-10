@@ -19,7 +19,7 @@ const EnrolledCourses = () => {
             // dispatch(getAllCourses(setallCourses));
         }, []
     );
-    // console.log(allCourses);
+    //console.log(allCourses);
     //console.log(user);
     return (
         <div className='text-white'>

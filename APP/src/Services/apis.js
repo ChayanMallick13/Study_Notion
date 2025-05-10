@@ -19,6 +19,7 @@ export const authLinks = {
     GETOTP_API:BASE_URL+'/auth/getOtp',
     GET_RESET_TOKEN_API:BASE_URL+'/auth/resetPasswordToken',
     RESET_PASSWORD_API:BASE_URL+'/auth/resetPassword',
+    SIGN_IN_WITH_GOOGLE:BASE_URL+'/auth/sigInWithGoogle',
 }
 
 export const updateProfileLinks = {
@@ -61,6 +62,7 @@ export const paymentLinks = {
     CREATE_ORDER_API:BASE_URL+'/payment/capturePayment',
     VERIFY_ORDER_API:BASE_URL+'/payment/verifySignature',
     SEND_PURCHASE_COMPLETE_MAIL:BASE_URL+'/payment/sendPurchaseMail',
+    GET_USER_PAYMENT_HISTORY:BASE_URL+'/payment/getUserPaymentHistory',
 }
 
 export const profileLinks = {

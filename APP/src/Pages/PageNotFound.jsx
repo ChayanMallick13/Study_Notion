@@ -1,8 +1,8 @@
 import React from 'react'
 
 
-function PageNotFound() {
 
+function PageNotFound() {
 
   return (
     <div className='text-white text-4xl h-[90vh] flex items-center justify-center'>

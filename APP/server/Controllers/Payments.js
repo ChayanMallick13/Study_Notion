@@ -6,6 +6,7 @@ const { courseEnrollmentEmail } = require('../mail/templates/courseEnrollmentEma
 const { generatePurchaseConfirmationEmail } = require('../mail/templates/PurchaseCompletionMail');
 const crypto = require('crypto');
 const { default: mongoose } = require('mongoose');
+const Reciept = require('../Models/Reciept');
 require('dotenv').config();
 
 
@@ -43,6 +44,18 @@ exports.capturePayment = async (req, res) => {
             totalAmount += courseDetails.price;
         }
 
+        const userDetails = await User.findById(userId);
+
+        if(totalAmount===0){
+            return res.status(200).json({
+                 success: true,
+                 message: 'Order Created Free Order',
+                 userDetails,
+                 orderCreationResponse:"****",
+            });
+            
+        }
+
         try {
             const options = {
                 amount: totalAmount * 100,
@@ -54,7 +67,6 @@ exports.capturePayment = async (req, res) => {
             );
             console.log(orderCreationResponse);
 
-            const userDetails = await User.findById(userId);
 
             return res.status(200).json({
                 success: true,
@@ -80,11 +92,50 @@ exports.capturePayment = async (req, res) => {
 //if successfully order is completed
 exports.verifySignature = async (req, res) => {
     try {
+        const courses = req.body.courses;
+        const userId = req.user.userId;
+        if(req.body.zeroPayemnt){
+            //enroll the studnets into the courses 
+            for (let courseId of courses) {
+
+                // courses enrolled update for studnets
+                const updatedCourse = await Course.findByIdAndUpdate(courseId,
+                    {
+                        $push: {
+                            studentsEnrolled: userId,
+                        }
+                    },
+                    { new: true }
+                );
+
+                //studnets erolled update for course 
+                const updatedUser = await User.findByIdAndUpdate(userId,
+                    {
+                        $push: {
+                            courses: courseId,
+                        }
+                    },
+                    {
+                        new: true,
+                    }
+                );
+
+                const maileSendInfo = await mailSender(updatedUser.email, `Successfully Enrolled into ${updatedCourse.courseName} , STUDY NOTION `,
+                    courseEnrollmentEmail(updatedCourse.courseName, updatedUser.firstName + " " + updatedUser.lastName));
+
+                console.log('Mail Send SuccessFully');
+            }
+
+
+            return res.status(200).json({
+                success: true,
+                message: 'Payment Successfull',
+                recieptDetails:null,
+            });
+        }
         const razorpay_order_id = req.body.razorpay_order_id;
         const razorpay_payment_id = req.body.razorpay_payment_id;
         const razorpay_signature = req.body.razorpay_signature;
-        const courses = req.body.courses;
-        const userId = req.user.userId;
 
         if (!razorpay_order_id || !razorpay_payment_id || !razorpay_signature || !userId || !courses || courses?.length === 0) {
             return res.status(404).json({
@@ -131,9 +182,26 @@ exports.verifySignature = async (req, res) => {
                 console.log('Mail Send SuccessFully');
             }
 
+            const razorpayPaymentDetails = await instance.payments.fetch(razorpay_payment_id);
+
+            ///store the payment id for future reference 
+            const recieptDetails = await Reciept.create({
+                userId,
+                paymentId:razorpay_payment_id,
+                amount:razorpayPaymentDetails.amount,
+                currency:razorpayPaymentDetails.currency,
+                method:razorpayPaymentDetails.method,
+                orderId:razorpayPaymentDetails.order_id,
+                createdAt:razorpayPaymentDetails.created_at,
+                bank:razorpayPaymentDetails.bank,
+                courses,
+            });
+
+
             return res.status(200).json({
                 success: true,
                 message: 'Payment Successfull',
+                recieptDetails,
             });
         }
         else { //payment failed

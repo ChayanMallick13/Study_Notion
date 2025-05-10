@@ -44,7 +44,7 @@ const Password = () => {
 
                     >
 
-                        <div className='relative'>
+                        <div className={`relative ${(user.isGoogleAccount)&&'w-0 h-0 absolute hidden'} `}>
                             <label htmlFor='currentPass' className='w-full'>
 
                                 <p
@@ -55,7 +55,7 @@ const Password = () => {
                                     type={`${(showPassword)?('text'):('password')}`}
                                     placeholder='Enter Current Password'
                                     id='currentPass'
-                                    {...register('oldPassword', { required: true })}
+                                    {...register('oldPassword', { required: !(user.isGoogleAccount) })}
                                     className='w-full bg-richblack-700 rounded-[0.5rem] text-richblack-5 
     p-[12px] border-b-[0.8px] border-b-richblack-200'
                                 ></input>

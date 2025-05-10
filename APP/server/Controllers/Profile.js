@@ -1,6 +1,7 @@
 const User = require('../Models/User');
 const Profile = require('../Models/Profile');
 const Course = require('../Models/Course');
+const  Reciept = require('../Models/Reciept');
 const { fileRemoveFromCloudinary } = require('../Utilities/FileRemover');
 const Scheduled_Deletions = require('../Models/Scheduled_Deletions');
 const cron = require('node-cron');
@@ -265,6 +266,12 @@ const deleteAccount = async (userId) => {
         const DeletedInfoReview = await RatingAndReview.find({
             user:userId,
         });
+
+        //delete the reciepts of the user
+        const deletedReciepts = await Reciept.find({userId});
+        for(let reciept of deletedReciepts){
+            await Reciept.findByIdAndDelete(reciept._id);
+        }
 
         //remove the review from the course
         for(let review of DeletedInfoReview){

@@ -10,6 +10,7 @@ const {auth,isAdmin,isInstructor,isStudent} = require('../MiddleWares/Auth');
 //controllers
 
 const {capturePayment,verifySignature,sendPurchaseCompleteMail} = require('../Controllers/Payments');
+const { getReieptDetails } = require('../Controllers/Reciept');
 
 
 
@@ -19,6 +20,9 @@ const {capturePayment,verifySignature,sendPurchaseCompleteMail} = require('../Co
 paymentrouter.post('/capturePayment',auth,isStudent,capturePayment);
 paymentrouter.post('/verifySignature',auth,verifySignature);
 paymentrouter.post('/sendPurchaseMail',auth,sendPurchaseCompleteMail);
+
+//payment detials routes 
+paymentrouter.get('/getUserPaymentHistory',auth,getReieptDetails);
 
 
 

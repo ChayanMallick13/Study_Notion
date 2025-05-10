@@ -55,8 +55,8 @@ const InstructorStatsSection = ({TotalIncome,totalStudents,totalCourses,courses}
     console.log('Temp',studentsData);
 
   return (
-    <div className='w-full my-5 flex justify-between'>
-        <div  className='flex flex-col gap-y-4 font-extrabold bg-richblack-800 p-4 border-[2px] border-richblack-300/20 rounded-xl w-[42vw]'>
+    <div className='w-full my-5 flex justify-between flex-col lg:flex-row gap-y-6'>
+        <div  className='flex flex-col gap-y-4 font-extrabold bg-richblack-800 p-4 border-[2px] border-richblack-300/20 rounded-xl lg:w-[73%] w-[100%]'>
                 {/* //Pie Char  */}
                 <h3>Visualise</h3>
                 <div className='flex gap-x-4'>
@@ -79,7 +79,7 @@ const InstructorStatsSection = ({TotalIncome,totalStudents,totalCourses,courses}
                     />
                 </div>
         </div>
-        <div className='flex flex-col gap-y-4 font-extrabold w-[250px] bg-richblack-800 p-4 border-[2px] border-richblack-300/20 rounded-xl'>
+        <div className='flex flex-col gap-y-4 font-extrabold bg-richblack-800 p-4 border-[2px] border-richblack-300/20 rounded-xl lg:w-[25%] w-[100%]'>
             <h3 className='font-extrabold text-xl'>Statistics</h3>
             <div>
                 <p className='text-richblack-100 text-lg'>Total Courses</p>
