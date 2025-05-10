@@ -25,7 +25,7 @@ function Frame({ shadow, topleft, media, isvideo, imgh, imgw,color='bg-white' })
                     (
                         <img src={media} alt='img'
                             style={{ height: imgh, width: imgw }}
-                            className={`
+                            className={` ${imgh}
                 ${(shadow) ? (`
                     ${(topleft) ? 'shadow-[16px_16px_29px_2px_rgba(55,117,192,0.4)]' :
                                         'shadow-[-16px_-16px_29px_2px_rgba(55,117,192,0.4)]'}
@@ -35,11 +35,11 @@ function Frame({ shadow, topleft, media, isvideo, imgh, imgw,color='bg-white' })
                     )
             }
 
-            <div className={`w-[20px] h-full ${color} absolute ${(topleft)
-                ? ('-left-5 bottom-5') : ('-right-5 top-5')
+            <div className={`md:w-[20px] w-[12px] h-full ${color} absolute ${(topleft)
+                ? ('md:-left-5 -left-3 md:bottom-5 bottom-2') : ('md:-right-5 -right-2 md:top-5 top-2 md:mt-0 mt-[2px]')
                 }`}></div>
-            <div className={`w-[90%] h-[20px] ${color} absolute ${(topleft)
-                ? ('-left-5 -top-5') : ('left-5 ')
+            <div className={`xl:w-[93%] w-[66%] md:h-[20px] h-[10px] ${color} absolute ${(topleft)
+                ? ('md:-left-5 -left-2 md:-top-5 -top-2') : ('right-0 ')
                 }`}></div>
 
         </div>

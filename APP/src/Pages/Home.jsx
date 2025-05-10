@@ -354,7 +354,7 @@ const Home = () => {
                                 topleft={true}
                                 shadow={false}
                                 media={teacherimg}
-                                imgh={520}
+                                imgh={'h-[300px] md:h-[400px] xl:h-[520px]'}
                             />
                         </div>
 
