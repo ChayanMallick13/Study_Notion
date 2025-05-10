@@ -1,17 +1,23 @@
-import React, { useState } from 'react'
+import React, { useRef, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom';
 import { FaChevronLeft } from "react-icons/fa";
 import { FaEdit } from "react-icons/fa";
 import { getCompletedLecturesofCourse, getTotalLectures } from '../../Services/Operations/Course_Utils';
 import { useSelector } from 'react-redux';
 import CollapsableSection from './CollapsableSection';
+import useOutsideClickHandler from '../../Hooks/useOutsideClickHandler';
 
-const VideoDetailsSidebar = ({courseName,courseContent,setreviewModal,showDash}) => {
+const VideoDetailsSidebar = ({courseName,courseContent,setreviewModal,showDash,setShowDash}) => {
 
     const navigate = useNavigate();
 
     const {user} = useSelector(state => state.Profile);
     const {courseId} = useParams();
+
+    const elementRef = useRef();
+        useOutsideClickHandler(elementRef,() => {
+          setShowDash(false);
+        })
 
     
 
@@ -21,7 +27,9 @@ const VideoDetailsSidebar = ({courseName,courseContent,setreviewModal,showDash})
   return (
     <div className={`text-white bg-richblack-800 xl:relative w-[340px] fixed z-10 h-[100%] px-5  bottom-0 py-14 flex flex-col gap-y-5
         ${(showDash)?(''):('hidden')}
-    `}>
+    `}
+    ref={elementRef}
+    >
         <div className='flex justify-between items-center'>
           <button
           onClick={() => {

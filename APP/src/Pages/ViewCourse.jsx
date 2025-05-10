@@ -76,6 +76,7 @@ const ViewCourse = () => {
                         setreviewModal={setreviewModal}
                         {...course}
                         showDash={showDash}
+                        setShowDash={setshowDash}
                     />
                 </div>
 
