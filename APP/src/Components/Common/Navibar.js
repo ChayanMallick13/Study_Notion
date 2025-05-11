@@ -52,8 +52,9 @@ const Navibar = () => {
         :('bg-richblack-800 border-b-richblack-700')} 
         relative top-0 border-b-2  transition-all duration-200`}>
 
-            <div className='w-11/12 max-w-maxContent flex justify-between mx-auto text-pure-greys-100 items-center py-2   md:pl-0 pl-10
-        '>
+            <div className={`w-11/12 max-w-maxContent flex justify-between mx-auto text-pure-greys-100 items-center py-2   md:pl-0 
+            ${user&&'pl-10'}
+        `}>
                 <Link to={'/'}>
                     <img alt='logo' src={logoimg} height={100} width={160} />
                 </Link>
