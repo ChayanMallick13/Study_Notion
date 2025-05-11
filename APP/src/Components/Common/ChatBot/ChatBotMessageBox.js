@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { ImCross } from "react-icons/im";
 import { toggleShowChat } from '../../../reducer/Slices/ChatBotSlice';
 import { IoSend } from "react-icons/io5";
-import { getGeminiResponse } from '../../../Services/Operations/Gemini_Api';
+import getGeminiResponse from '../../../Services/Operations/Gemini_Api';
 import ReactMarkdown from 'react-markdown'
 
 

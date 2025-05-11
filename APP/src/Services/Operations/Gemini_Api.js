@@ -6,7 +6,7 @@ const { addBotReply, addUserText, toggleBotTyping } = require("../../reducer/Sli
 
 
 
-exports.getGeminiResponse = (userPrompt) => {
+export const getGeminiResponse = (userPrompt) => {
     return async(dispatch) => {
         dispatch(toggleBotTyping());
         dispatch(addUserText(userPrompt));
