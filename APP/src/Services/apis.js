@@ -73,3 +73,7 @@ export const profileLinks = {
 export const courseProgressLinks = {
     COMPLETE_VIDEO_LINK:BASE_URL+'/auth/makeCompleteVideoRequest/'
 }
+
+export const geminiLinks = {
+    GEMINI_API_LINK_BACKEND:BASE_URL+'/auth/geminiapi'
+}

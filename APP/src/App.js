@@ -29,6 +29,7 @@ import VideoPlayer from "./Components/Common/VideoPlayer";
 import InstructorDash from './Components/Core/TeacherDashBoard/DashboardIndex';
 import Index from "./Components/Core/PaymentHistory/Index";
 import { useEffect } from "react";
+import ChatBotIndex from "./Components/Common/ChatBot/ChatBotIndex";
 
 
 
@@ -44,6 +45,8 @@ function App() {
   return (
     <div className="w-screen min-h-screen bg-richblack-900 flex flex-col font-inter">
       <Navibar />
+
+      <ChatBotIndex/>
 
       <Routes>
 

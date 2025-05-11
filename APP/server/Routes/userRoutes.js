@@ -16,6 +16,7 @@ const {resetPassword,resetPasswordToken} = require('../Controllers/ResetPassword
 const {getStats} = require('../Controllers/Stats');
 
 const {createCourseProgress} = require('../Controllers/CourseProgress');
+const { callGeminiApi } = require('../Controllers/ChatBot');
 
 
 
@@ -36,6 +37,10 @@ userrouter.post('/resetPasswordToken',resetPasswordToken);
 
 //courseProgress Routes 
 userrouter.post('/makeCompleteVideoRequest',auth,createCourseProgress);
+
+
+//gemini routes 
+userrouter.post('/geminiapi',callGeminiApi);
 
 
 

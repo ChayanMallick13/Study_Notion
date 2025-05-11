@@ -25,7 +25,7 @@ const VideoDetailsSidebar = ({courseName,courseContent,setreviewModal,showDash,s
 
   return (
     <div className={`text-white bg-richblack-800 xl:relative w-[340px] fixed z-10 h-[100%] px-5  bottom-0 py-14 flex flex-col gap-y-5
-        ${(showDash)?(''):('hidden')}
+        ${(showDash)?(''):('xl:flex hidden')}
     `}
     >
         <div className='flex justify-between items-center'>
