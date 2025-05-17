@@ -66,7 +66,7 @@ const verifyPaymentHandler = async(purchaseResponse,courses,navigate,dispatch) =
 
         
 
-        dispatch(updateLatestUserDetails());
+        dispatch(updateLatestUserDetails(true));
 
 
 

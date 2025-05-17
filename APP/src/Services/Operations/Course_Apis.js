@@ -82,7 +82,7 @@ export const completeVideoRequestHandler = (body,navigate) => {
                     console.log('Some Error Occurred in Complete Video Handler');
                 }
             );
-            await dispatch(updateLatestUserDetails());
+            await dispatch(updateLatestUserDetails(true));
         } catch (error) {
             console.error('Some Error Occurred in Complete Video Handler');
         }

@@ -34,13 +34,13 @@ function CoursePage() {
         const body = {
             courseId,
         }
-        dispatch(updateLatestUserDetails());
+        dispatch(updateLatestUserDetails(user));
         dispatch(getCourseDetails(body,setCourseDetails,setLoading,navigate));
         GetAvgRating(courseId,setAverageRating);
     }
 
     function checkAlreadyBought(){
-        if(user.accountType === ACCOUNT_TYPE.INSTRUCTOR){
+        if(!user ||  user.accountType === ACCOUNT_TYPE.INSTRUCTOR){
             return false;
         }
         const ret = user.courses.filter((ele) => ele._id === courseId);

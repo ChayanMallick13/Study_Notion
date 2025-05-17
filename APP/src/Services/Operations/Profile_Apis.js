@@ -55,7 +55,7 @@ export const changePassword = (formdata,setdiableSubmit) => {
             const apiRes = await apiConnector('PUT',updateProfileLinks.CHANGE_PASSWORD_API,formdata);
             if(apiRes.data.success){
                 toast.success('Password Changed Successfully');
-                dispatch(updateLatestUserDetails());
+                dispatch(updateLatestUserDetails(true));
             }
             else{
                 throw new Error("Error");
@@ -104,14 +104,16 @@ export const makeRecoverReq = (setreqForDeletion,setloadingDeletionStatus) => {
     }
 }
 
-export const updateLatestUserDetails = () => {
+export const updateLatestUserDetails = (user) => {
     return async(dispatch) => {
-        await apiConnector('GET',profileLinks.GET_ALL_PROFILE_DETAILS_API).then(
-            (res) => {
-                dispatch(setUser(res.data.UserDetails));
-                localStorage.setItem('user',JSON.stringify(res.data.UserDetails));
-            }
-        );
+        if(user){
+            await apiConnector('GET',profileLinks.GET_ALL_PROFILE_DETAILS_API).then(
+                (res) => {
+                    dispatch(setUser(res.data.UserDetails));
+                    localStorage.setItem('user',JSON.stringify(res.data.UserDetails));
+                }
+            );
+        }
     }
 }
 

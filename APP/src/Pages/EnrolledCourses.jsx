@@ -15,7 +15,7 @@ const EnrolledCourses = () => {
     useEffect(
         () => {
             dispatch(getAllEnrolledCourses(setallCourses));
-            dispatch(updateLatestUserDetails());
+            dispatch(updateLatestUserDetails(user));
             // dispatch(getAllCourses(setallCourses));
         }, []
     );
